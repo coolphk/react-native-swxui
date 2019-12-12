@@ -1,14 +1,9 @@
-import {Text} from 'react-native';
+import RichText from './src/RichText';
+import Button from "./src/Button/button";
+import {AppRegistry} from "react-native"
 
-
-import React, {Component} from 'react';
-
-class Index extends Component {
-  render() {
-    return (
-      <Text>aaaaaa</Text>
-    )
-  }
-}
-
-export default Index;
+export {
+  RichText,
+  Button,
+  AppRegistry
+};

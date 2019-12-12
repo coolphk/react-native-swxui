@@ -1,6 +1,6 @@
 {
   "name": "react-native-swxui",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -9,13 +9,17 @@
   "keywords": [
     "react-native"
   ],
-  "author": "",
+  "repository": {
+    "git": "https://github.com/coolphk/react-native-swxui.git"
+  },
+  "author": "coolphk",
   "license": "",
-  "peerDependencies": {
+  "dependencies": {
+    "prop-types": "^15.7.2",
+    "react": "16.8.3",
     "react-native": "0.59.8"
   },
-  "devDependencies": {
-    "react": "16.8.3",
+  "peerDependencies": {
     "react-native": "0.59.8"
   }
 }

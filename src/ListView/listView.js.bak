@@ -1,0 +1,65 @@
+import React, {Component} from 'react';
+import {View, StyleSheet, ScrollView, TouchableNativeFeedback, Platform} from 'react-native'
+import Theme from '../Theme/defaultTheme'
+import TextView from './textView'
+import {connect} from "react-redux";
+import {setScrollEnabled} from "../state/actions";
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#ffffff',
+    borderStyle: "solid",
+    borderBottomWidth: 0.5,
+    borderBottomColor: Theme.colorLightGray3,
+    paddingLeft: Theme.paddingHorizontal + 10
+  },
+})
+
+
+class ListView extends Component {
+
+  closeBodyScroll = (e) => {
+    if (this.props.scrollEnabled)
+      this.props.dispatch(setScrollEnabled(false))
+  }
+
+  render() {
+    if (this.props.list.length > 0 && this.props.multiselect) {
+      return (
+        <ScrollView style={{maxHeight: 140}} onTouchMove={this.closeBodyScroll}>
+          <View style={styles.container}>
+            {
+              this.props.list.map((value, index) => {
+                return (
+                  <TextView
+                    del={true}
+                    key={index}
+                    text={value.text || value}
+                    setDelete={() => {
+                      this.props.setDelete(value, index)
+                      this.forceUpdate()
+                    }}
+                    imgStyle={{position: "absolute", right: 12}}
+                    style={{borderStyle: "solid", borderBottomWidth: 0.5, borderBottomColor: Theme.colorLightGray3,}}
+                  />
+                )
+              })
+            }
+          </View>
+        </ScrollView>
+      );
+    } else {
+      return (
+        null
+      )
+    }
+
+  }
+}
+
+const mapStateToProps = state => ({
+  scrollEnabled: state.counter.scrollEnabled
+})
+export default connect(
+  mapStateToProps,
+)(ListView);
